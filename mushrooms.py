@@ -14,6 +14,8 @@ import sys
 
 from datetime import date
 
+import os
+
 
 def send_email(username, password, recipients, subject, body):
     # Vytvoření HTML zprávy
