@@ -2,7 +2,7 @@ name: Daily Job
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Tento cron syntax spustí job každý den o půlnoci UTC
+    - cron: '0 14 * * *'  # Tento cron syntax spustí job každý den o půlnoci UTC
   workflow_dispatch:  # Umožní ruční spuštění workflow
 
 jobs:
