@@ -1,0 +1,31 @@
+name: Daily Job
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Tento cron syntax spustí job každý den o půlnoci UTC
+  workflow_dispatch:  # Umožní ruční spuštění workflow
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Zvolte verzi Pythonu, kterou potřebujete
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run script
+      env:
+        EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        RECIPIENTS: ${{ secrets.RECIPIENTS }}
+      run: python mushrooms.py
