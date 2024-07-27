@@ -1,6 +1,6 @@
 # Mushroom Growth probability in Czech Republic
 
-This script fetches an image from Český hydrometeorologický ústav, processes it to detect specific color ranges, and calculates the probability of mushroom growth in a specified region. Additionally, it sends an email with the results. The code is automated via GitHub actions to send it on every Thursday.
+This script fetches an image from Český hydrometeorologický ústav, processes it to detect specific color ranges, and gets the probability of mushroom growth in a specified region. Additionally, it sends an email with the results. The code is automated via GitHub actions to send it on every Thursday.
 
 ## Dependencies
 
@@ -29,14 +29,14 @@ This script fetches an image from Český hydrometeorologický ústav, processes
 2. **Run the script**:
 
     ```bash
-    python script.py
+    python mushroos.py
     ```
 
     The script performs the following steps:
 
     - Downloads an image from the specified URL.
     - Processes the image to detect specific color ranges.
-    - Calculates the probability of mushroom growth in the specified region.
+    - Gets the probability of mushroom growth in the specified region.
     - Displays the probabilities and the processed image.
     - Sends an email with the results.
 
