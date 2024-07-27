@@ -121,19 +121,29 @@ probabilities = detect_and_display_probability(region_image, color_ranges)
 # Výpočet dominantní pravděpodobnosti
 dominant_probability = max(probabilities, key=probabilities.get)
 
-
-visualize_color_ranges(color_ranges)
-
+#visualize_color_ranges(color_ranges)
 
 print(f'Dominantní pravděpodobnost růstu hub ve vybrané oblasti je: {dominant_probability}')
 
+prefixes = {
+    "velmi nizka": "Nerostou. ",
+    "nizka": "Nerostou. ",
+    "stredni": "",
+    "vysoka": "Rostou! ",
+    "velmi vysoka": "Rostou fakt hodně! "
+}
 
-message = MIMEText('Dokonalá automatizace v praxi. Nechávám Python, aby za mě posílal email. Jak lovely! :)')
-subject = f'Růst hub v tvé oblasti pro den {str(date.today())}: {dominant_probability} pravděpodobnost'  # Předmět
+try:
+    prefix = prefixes[dominant_probability]
+except:
+    prefix = ""
+
+subject = f'{prefix}Růst hub v tvé oblasti pro den {str(date.today())}: {dominant_probability} pravděpodobnost'
 
 username = os.getenv('EMAIL_USERNAME')
 password = os.getenv('EMAIL_PASSWORD')
 recipients = os.getenv('RECIPIENTS').split(',')
+
 
 body = f'''
 <html>
