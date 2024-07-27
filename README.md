@@ -29,7 +29,7 @@ This script fetches an image from Český hydrometeorologický ústav, processes
 2. **Run the script**:
 
     ```bash
-    python mushroos.py
+    python mushrooms.py
     ```
 
     The script performs the following steps:
